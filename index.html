@@ -1,0 +1,1153 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ominico — Omni Channel & AI Communication Platform</title>
+  <meta name="description" content="Ominico is an AI-powered Omni Channel Communication Platform for WhatsApp Business, AI Assistant, Ticketing, Campaigns, and Customer Engagement.">
+  <link rel="icon" href="ominico favicon.png">
+
+<style>
+
+/* =========================================================
+   ROOT
+========================================================= */
+
+:root{
+  --blue:#006ff5;
+  --cyan:#14c8ff;
+  --purple:#8f56ff;
+
+  --bg:#020817;
+  --bg-2:#030b25;
+
+  --text:#ffffff;
+  --muted:rgba(255,255,255,.70);
+
+  --line:rgba(92,131,255,.16);
+
+  --shadow:
+    0 20px 60px rgba(0,111,245,.22);
+
+  --max:1280px;
+}
+
+/* =========================================================
+   RESET
+========================================================= */
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  font-family:
+    Inter,
+    ui-sans-serif,
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+
+  background:var(--bg);
+
+  color:#fff;
+
+  overflow-x:hidden;
+}
+
+a{
+  text-decoration:none;
+  color:inherit;
+}
+
+img{
+  max-width:100%;
+  display:block;
+}
+
+.container{
+  width:min(100% - 56px,var(--max));
+  margin:auto;
+}
+
+/* =========================================================
+   NAVBAR
+========================================================= */
+
+header{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+
+  z-index:999;
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(2,6,23,.74),
+      rgba(2,6,23,.18)
+    );
+
+  backdrop-filter:blur(18px);
+}
+
+.navbar{
+  height:84px;
+
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+
+  gap:32px;
+}
+
+.logo img{
+  height:40px;
+  width:auto;
+}
+
+.nav-links{
+  display:flex;
+  align-items:center;
+  gap:34px;
+}
+
+.nav-links a{
+  color:rgba(255,255,255,.72);
+
+  font-size:.95rem;
+  font-weight:600;
+
+  transition:.25s ease;
+}
+
+.nav-links a:hover{
+  color:#fff;
+}
+
+.nav-actions{
+  display:flex;
+  align-items:center;
+  gap:14px;
+}
+
+/* =========================================================
+   BUTTONS
+========================================================= */
+
+.btn-primary{
+  min-height:54px;
+
+  padding:0 28px;
+
+  border-radius:16px;
+
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+
+  font-size:.95rem;
+  font-weight:750;
+
+  color:#fff;
+
+  background:
+    linear-gradient(
+      135deg,
+      var(--blue),
+      var(--purple)
+    );
+
+  box-shadow:var(--shadow);
+
+  transition:.25s ease;
+}
+
+.btn-primary:hover{
+  transform:translateY(-3px);
+
+  box-shadow:
+    0 28px 70px rgba(0,111,245,.34);
+}
+
+.btn-secondary{
+  min-height:54px;
+
+  padding:0 26px;
+
+  border-radius:16px;
+
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+
+  font-size:.95rem;
+  font-weight:700;
+
+  color:#fff;
+
+  border:1px solid var(--line);
+
+  background:
+    rgba(8,16,38,.48);
+
+  backdrop-filter:blur(12px);
+
+  transition:.25s ease;
+}
+
+.btn-secondary:hover{
+  transform:translateY(-3px);
+
+  border-color:#4d7fff;
+
+  background:
+    rgba(12,22,48,.72);
+}
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.hero{
+  position:relative;
+
+  min-height:100vh;
+
+  overflow:hidden;
+
+  display:flex;
+  align-items:center;
+
+  background:#030b25;
+}
+
+/* BACKGROUND IMAGE */
+
+.hero-bg{
+  position:absolute;
+  inset:0;
+
+  background-image:url("hero.png");
+
+  background-size:cover;
+  background-position:center;
+  background-repeat:no-repeat;
+
+  z-index:0;
+
+  transform:scale(1.01);
+}
+
+/* OVERLAY */
+
+.hero-overlay{
+  position:absolute;
+  inset:0;
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(2,6,23,.99) 0%,
+      rgba(2,6,23,.95) 18%,
+      rgba(2,6,23,.80) 36%,
+      rgba(2,6,23,.52) 54%,
+      rgba(2,6,23,.20) 74%,
+      rgba(2,6,23,.10) 100%
+    );
+
+  z-index:1;
+}
+
+/* GRID */
+
+.hero-grid{
+  position:absolute;
+  inset:0;
+
+  background-image:
+    linear-gradient(
+      rgba(0,111,245,.03) 1px,
+      transparent 1px
+    ),
+
+    linear-gradient(
+      90deg,
+      rgba(0,111,245,.03) 1px,
+      transparent 1px
+    );
+
+  background-size:70px 70px;
+
+  mask-image:
+    linear-gradient(
+      to bottom,
+      black,
+      transparent 92%
+    );
+
+  z-index:1;
+}
+
+/* HERO INNER */
+
+.hero-inner{
+  position:relative;
+  z-index:2;
+
+  width:100%;
+
+  padding:120px 0 80px;
+}
+
+/* HERO CONTENT */
+
+.hero-content{
+  max-width:680px;
+
+  padding-left:72px;
+}
+
+/* BADGE */
+
+.hero-badge{
+  display:inline-flex;
+  align-items:center;
+  gap:12px;
+
+  padding:11px 18px;
+
+  border-radius:999px;
+
+  border:1px solid rgba(84,133,255,.24);
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(0,111,245,.10),
+      rgba(143,86,255,.06)
+    );
+
+  backdrop-filter:blur(12px);
+
+  color:#ffffff;
+
+  font-size:.74rem;
+  font-weight:700;
+
+  letter-spacing:.14em;
+
+  margin-bottom:26px;
+}
+
+.hero-badge .dot{
+  width:8px;
+  height:8px;
+
+  border-radius:50%;
+
+  background:#14c8ff;
+
+  box-shadow:
+    0 0 14px #14c8ff;
+}
+
+/* HERO TITLE */
+
+.hero h1{
+  margin:0 0 24px;
+
+  color:#ffffff;
+
+  font-size:clamp(2.8rem,4vw,4.6rem);
+
+  line-height:1;
+
+  letter-spacing:-.07em;
+
+  font-weight:820;
+}
+
+.hero h1 span{
+  background:
+    linear-gradient(
+      135deg,
+      #14c8ff 0%,
+      #4b7fff 42%,
+      #9d5bff 100%
+    );
+
+  -webkit-background-clip:text;
+  background-clip:text;
+
+  color:transparent;
+}
+
+/* DESCRIPTION */
+
+.hero-desc{
+  max-width:640px;
+
+  color:rgba(255,255,255,.66);
+
+  font-size:1rem;
+
+  line-height:1.9;
+
+  margin-bottom:34px;
+}
+
+@media(min-width:1440px){
+  .hero-content{
+    max-width:720px;
+    padding-left:88px;
+  }
+
+  .hero h1{
+    font-size:3.8rem;
+  }
+
+  .hero-desc{
+    max-width:660px;
+    font-size:1.08rem;
+  }
+}
+
+@media(min-width:1680px){
+  .hero-content{
+    max-width:760px;
+    padding-left:120px;
+  }
+
+  .hero h1{
+    font-size:6.2rem;
+  }
+}
+
+/* HERO BUTTONS */
+
+.hero-actions{
+  display:flex;
+  align-items:center;
+  gap:16px;
+
+  flex-wrap:wrap;
+
+  margin-bottom:42px;
+}
+
+/* HERO FEATURES */
+
+.hero-features{
+  display:flex;
+  align-items:center;
+  gap:24px;
+
+  flex-wrap:wrap;
+}
+
+.hero-feature{
+  position:relative;
+
+  padding-right:24px;
+}
+
+.hero-feature:not(:last-child)::after{
+  content:"";
+
+  position:absolute;
+
+  right:0;
+  top:50%;
+
+  width:1px;
+  height:36px;
+
+  background:
+    rgba(255,255,255,.10);
+
+  transform:translateY(-50%);
+}
+
+.hero-feature strong{
+  display:block;
+
+  color:#fff;
+
+  font-size:.92rem;
+  font-weight:700;
+
+  margin-bottom:4px;
+}
+
+.hero-feature span{
+  color:rgba(255,255,255,.52);
+
+  font-size:.84rem;
+}
+
+/* =========================================================
+   SECTION
+========================================================= */
+
+.section{
+  position:relative;
+
+  padding:100px 0;
+
+  background:#030b25;
+}
+
+.section-title{
+  text-align:center;
+
+  max-width:760px;
+
+  margin:0 auto 54px;
+}
+
+.section-title h2{
+  margin-bottom:18px;
+
+  font-size:clamp(2.4rem,5vw,4.4rem);
+
+  line-height:1;
+
+  letter-spacing:-.07em;
+
+  color:#fff;
+}
+
+.section-title p{
+  color:rgba(255,255,255,.66);
+
+  line-height:1.8;
+
+  font-size:1.02rem;
+}
+
+/* =========================================================
+   GRID
+========================================================= */
+
+.grid{
+  display:grid;
+
+  grid-template-columns:repeat(3,1fr);
+
+  gap:24px;
+}
+
+/* =========================================================
+   CARD
+========================================================= */
+
+.card{
+  position:relative;
+
+  overflow:hidden;
+
+  min-height:250px;
+
+  padding:30px;
+
+  border-radius:28px;
+
+  border:1px solid rgba(84,133,255,.10);
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(10,18,40,.88),
+      rgba(8,14,30,.76)
+    );
+
+  backdrop-filter:blur(16px);
+
+  transition:.28s ease;
+}
+
+.card::before{
+  content:"";
+
+  position:absolute;
+
+  width:220px;
+  height:220px;
+
+  right:-90px;
+  bottom:-90px;
+
+  border-radius:50%;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(0,111,245,.12),
+      transparent 70%
+    );
+}
+
+.card:hover{
+  transform:translateY(-8px);
+
+  border-color:rgba(84,133,255,.26);
+
+  box-shadow:
+    0 24px 70px rgba(0,111,245,.14);
+}
+
+.card-icon{
+  width:56px;
+  height:56px;
+
+  margin-bottom:20px;
+
+  border-radius:18px;
+
+  display:grid;
+  place-items:center;
+
+  background:
+    linear-gradient(
+      135deg,
+      var(--blue),
+      var(--purple)
+    );
+
+  color:#fff;
+
+  font-weight:900;
+
+  box-shadow:
+    0 18px 34px rgba(0,111,245,.18);
+}
+
+.card h3{
+  margin-bottom:14px;
+
+  font-size:1.22rem;
+
+  color:#fff;
+
+  letter-spacing:-.04em;
+}
+
+.card p{
+  color:rgba(255,255,255,.62);
+
+  line-height:1.75;
+
+  font-size:.96rem;
+}
+
+/* =========================================================
+   CTA
+========================================================= */
+
+.cta{
+  position:relative;
+
+  overflow:hidden;
+
+  padding:84px 32px;
+
+  border-radius:38px;
+
+  text-align:center;
+
+  background:
+    radial-gradient(
+      circle at top,
+      rgba(20,200,255,.16),
+      transparent 36%
+    ),
+
+    linear-gradient(
+      135deg,
+      #0d1f46,
+      #071124
+    );
+
+  border:1px solid rgba(84,133,255,.10);
+}
+
+.cta h2{
+  max-width:760px;
+
+  margin:0 auto 18px;
+
+  font-size:clamp(2.4rem,5vw,4.5rem);
+
+  line-height:1;
+
+  letter-spacing:-.08em;
+}
+
+.cta p{
+  max-width:680px;
+
+  margin:0 auto 34px;
+
+  color:rgba(255,255,255,.68);
+
+  line-height:1.8;
+}
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+footer{
+  padding:70px 0 34px;
+
+  background:#020817;
+
+  border-top:1px solid rgba(84,133,255,.06);
+}
+
+.footer-grid{
+  display:grid;
+
+  grid-template-columns:1.4fr repeat(3,1fr);
+
+  gap:34px;
+}
+
+.footer-logo{
+  height:40px;
+
+  margin-bottom:18px;
+}
+
+footer h4{
+  margin-bottom:16px;
+
+  color:#fff;
+}
+
+footer a{
+  display:block;
+
+  margin:10px 0;
+
+  color:rgba(255,255,255,.62);
+}
+
+footer p{
+  color:rgba(255,255,255,.56);
+
+  line-height:1.8;
+}
+
+.copy{
+  margin-top:42px;
+
+  padding-top:22px;
+
+  border-top:1px solid rgba(255,255,255,.06);
+
+  color:rgba(255,255,255,.44);
+
+  font-size:.9rem;
+}
+
+/* =========================================================
+   REVEAL
+========================================================= */
+
+.reveal{
+  opacity:0;
+
+  transform:translateY(22px);
+
+  transition:.8s ease;
+}
+
+.reveal.visible{
+  opacity:1;
+
+  transform:translateY(0);
+}
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media(max-width:1024px){
+
+  .nav-links{
+    display:none;
+  }
+
+  .grid{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .footer-grid{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .hero-content{
+    padding-left:40px;
+  }
+}
+
+@media(max-width:768px){
+
+  .container{
+    width:min(100% - 28px,var(--max));
+  }
+
+  .navbar{
+    height:76px;
+  }
+
+  .logo img{
+    height:34px;
+  }
+
+  .nav-actions .btn-secondary{
+    display:none;
+  }
+
+  .hero{
+    min-height:920px;
+  }
+
+  .hero-overlay{
+    background:
+      linear-gradient(
+        180deg,
+        rgba(2,6,23,.74) 0%,
+        rgba(2,6,23,.92) 56%,
+        rgba(2,6,23,.98) 100%
+      );
+  }
+
+  .hero-inner{
+    padding:120px 0 80px;
+  }
+
+  .hero-content{
+    max-width:100%;
+
+    padding-left:0;
+
+    text-align:center;
+  }
+
+  .hero h1{
+    font-size:clamp(3.2rem,5vw,5.8rem);
+  }
+
+  .hero-desc{
+    font-size:.98rem;
+
+    margin-left:auto;
+    margin-right:auto;
+  }
+
+  .hero-actions{
+    flex-direction:column;
+  }
+
+  .btn-primary,
+  .btn-secondary{
+    width:100%;
+  }
+
+  .hero-features{
+    justify-content:center;
+
+    gap:18px;
+  }
+
+  .hero-feature{
+    padding-right:0;
+  }
+
+  .hero-feature::after{
+    display:none;
+  }
+
+  .grid,
+  .footer-grid{
+    grid-template-columns:1fr;
+  }
+
+  .section{
+    padding:80px 0;
+  }
+}
+
+</style>
+</head>
+
+<body>
+
+  <header>
+    <div class="container navbar">
+      <a href="index.html" class="logo">
+        <img src="ominico logo 512 dark.png" alt="Ominico">
+      </a>
+
+      <nav class="nav-links">
+        <a href="#features">Platform</a>
+        <a href="#solutions">Solutions</a>
+        <a href="#how">How It Works</a>
+        <a href="#contact">Contact</a>
+      </nav>
+
+      <div class="nav-actions">
+        <a href="login.html" class="btn-secondary">Login Dashboard</a>
+        <a href="#contact" class="btn-primary">Start Free Consultation</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+
+    <section class="hero">
+      <div class="hero-bg"></div>
+      <div class="hero-overlay"></div>
+      <div class="hero-grid"></div>
+
+      <div class="container hero-inner">
+        <div class="hero-content reveal">
+
+          <!-- <div class="hero-badge">
+            <span class="dot"></span>
+            OMNI CHANNEL & COMMUNICATION PLATFORM
+          </div> -->
+
+          <h1>
+            Omni Channel<br>
+            <span>Communication</span>
+          </h1>
+
+          <p class="hero-desc">
+            Manage omni channel & communication in one scalable platform for modern businesses.
+          </p>
+
+          <div class="hero-actions">
+            <a href="#contact" class="btn-primary">Start Free Consultation →</a>
+            <a href="login.html" class="btn-secondary">Login Dashboard →</a>
+          </div>
+
+          <div class="hero-features">
+            <div class="hero-feature">
+              <strong>Multi Tenant</strong>
+              <span>SaaS Platform</span>
+            </div>
+
+            <div class="hero-feature">
+              <strong>Enterprise</strong>
+              <span>Grade Security</span>
+            </div>
+
+            <div class="hero-feature">
+              <strong>Scalable</strong>
+              <span>For Any Business</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="features">
+      <div class="container">
+        <div class="section-title reveal">
+          <h2>One platform for smarter customer communication</h2>
+          <p>
+            Ominico brings WhatsApp Business, AI assistants, ticketing, campaigns,
+            and customer engagement into one connected platform.
+          </p>
+        </div>
+
+        <div class="grid">
+          <article class="card reveal">
+            <div class="card-icon">01</div>
+            <h3>Omni Channel Inbox</h3>
+            <p>Centralize customer conversations across WhatsApp and digital channels.</p>
+          </article>
+
+          <article class="card reveal">
+            <div class="card-icon">02</div>
+            <h3>WhatsApp Business Platform</h3>
+            <p>Manage customer messaging, templates, notifications, and communication workflows.</p>
+          </article>
+
+          <article class="card reveal">
+            <div class="card-icon">03</div>
+            <h3>AI Assistant</h3>
+            <p>Automate replies, classify intent, qualify leads, and support customer journeys.</p>
+          </article>
+
+          <article class="card reveal">
+            <div class="card-icon">04</div>
+            <h3>Ticketing System</h3>
+            <p>Convert conversations into trackable cases with ownership, status, and priority.</p>
+          </article>
+
+          <article class="card reveal">
+            <div class="card-icon">05</div>
+            <h3>Campaign Automation</h3>
+            <p>Launch targeted campaigns and automate customer engagement journeys.</p>
+          </article>
+
+          <article class="card reveal">
+            <div class="card-icon">06</div>
+            <h3>Customer Database</h3>
+            <p>Build unified customer profiles enriched with conversations, campaigns, and tickets.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="solutions">
+      <div class="container">
+        <div class="section-title reveal">
+          <h2>Solutions for every customer-facing team</h2>
+          <p>
+            Designed for sales, support, marketing, operations, and enterprise communication teams.
+          </p>
+        </div>
+
+        <div class="grid">
+          <article class="card reveal">
+            <div class="card-icon">S</div>
+            <h3>Sales</h3>
+            <p>Capture, qualify, and route leads faster through intelligent communication workflows.</p>
+          </article>
+
+          <article class="card reveal">
+            <div class="card-icon">C</div>
+            <h3>Customer Support</h3>
+            <p>Resolve issues with AI assistance, ticketing, and complete customer context.</p>
+          </article>
+
+          <article class="card reveal">
+            <div class="card-icon">M</div>
+            <h3>Marketing</h3>
+            <p>Run segmented campaigns and measure customer engagement performance.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="how">
+      <div class="container">
+        <div class="section-title reveal">
+          <h2>How it works</h2>
+          <p>
+            Launch smarter customer engagement workflows in a simple and scalable process.
+          </p>
+        </div>
+
+        <div class="grid">
+          <article class="card reveal">
+            <div class="card-icon">1</div>
+            <h3>Connect Channels</h3>
+            <p>Bring WhatsApp and digital conversations into one unified layer.</p>
+          </article>
+
+          <article class="card reveal">
+            <div class="card-icon">2</div>
+            <h3>Build AI Automation</h3>
+            <p>Create workflows for replies, routing, qualification, and ticket creation.</p>
+          </article>
+
+          <article class="card reveal">
+            <div class="card-icon">3</div>
+            <h3>Analyze Engagement</h3>
+            <p>Use customer data and campaign insights to grow communication performance.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="contact">
+      <div class="container">
+        <div class="cta reveal">
+          <h2>Build smarter customer communication with Ominico</h2>
+          <p>
+            Be among the first to experience a smarter way to manage WhatsApp Business,
+            AI assistants, ticketing, campaigns, and customer engagement.
+          </p>
+
+          <a href="mailto:hello@ominico.com" class="btn-primary">Contact Sales →</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="container footer-grid">
+      <div>
+        <img class="footer-logo" src="ominico logo 512 dark.png" alt="Ominico">
+        <p>
+          Omni Channel and AI Communication Platform for WhatsApp Business,
+          AI Assistant, Ticketing, Campaigns, and Customer Engagement.
+        </p>
+      </div>
+
+      <div>
+        <h4>Product</h4>
+        <a href="#features">Omni Channel</a>
+        <a href="#features">WhatsApp Business</a>
+        <a href="#features">AI Assistant</a>
+        <a href="#features">Ticketing</a>
+      </div>
+
+      <div>
+        <h4>Solutions</h4>
+        <a href="#solutions">Sales</a>
+        <a href="#solutions">Support</a>
+        <a href="#solutions">Marketing</a>
+        <a href="#solutions">Operations</a>
+      </div>
+
+      <div>
+        <h4>Contact</h4>
+        <a href="mailto:hello@ominico.com">hello@ominico.com</a>
+        <a href="https://ominico.com">ominico.com</a>
+        <a href="login.html">Login Dashboard</a>
+      </div>
+    </div>
+
+    <div class="container copy">
+      © <span id="year"></span> Ominico. All rights reserved.
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    const observer = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if(entry.isIntersecting){
+          entry.target.classList.add("visible");
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll(".reveal").forEach(function(el){
+      observer.observe(el);
+    });
+  </script>
+
+</body>
+</html>
